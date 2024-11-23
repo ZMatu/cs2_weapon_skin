@@ -329,7 +329,7 @@ const char* Skin::GetDescription()
 
 const char* Skin::GetName()
 {
-	return "si";
+	return "sisi";
 }
 
 const char* Skin::GetURL()
