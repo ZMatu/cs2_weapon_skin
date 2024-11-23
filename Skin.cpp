@@ -176,8 +176,8 @@ void Skin::StartupServer(const GameSessionConfiguration_t& config, ISource2World
 	#else
 	CModule libserver(g_pSource2Server);
 	FnUTIL_ClientPrintAll = libserver.FindPatternSIMD("55 48 89 E5 41 57 49 89 D7 41 56 49 89 F6 41 55 41 89 FD").RCast< decltype(FnUTIL_ClientPrintAll) >();
-	FnGiveNamedItem = libserver.FindPatternSIMD("55 48 89 E5 41 57 41 56 49 89 CE 41 55 49 89 F5 41 54 49 89 D4 53 48 89").RCast<decltype(FnGiveNamedItem)>();
-	FnEntityRemove = libserver.FindPatternSIMD("48 85 F6 74 0B 48 8B 76 10 E9 B2 FE FF FF").RCast<decltype(FnEntityRemove)>();
+	FnGiveNamedItem = libserver.FindPatternSIMD("55 48 89 E5 41 57 41 56 49 89 D6 41 55 49 89 CD 41 54 49 89 F4 53 48 89 FB 48 8D 3D").RCast<decltype(FnGiveNamedItem)>();
+	FnEntityRemove = libserver.FindPatternSIMD("48 89 FE 48 85 FF 74 ? 48 8D 05 ? ? ? ? 48").RCast<decltype(FnEntityRemove)>();
 	#endif
 	g_pGameRules = nullptr;
 
@@ -261,7 +261,7 @@ void CEntityListener::OnEntitySpawned(CEntityInstance* pEntity)
 	META_CONPRINTF( "steamId: %lld itemId: %d\n", steamid, weaponId);
 }
 
-CON_COMMAND_F(skin, "skin", FCVAR_CLIENT_CAN_EXECUTE)
+CON_COMMAND_F(skin, "gen", FCVAR_CLIENT_CAN_EXECUTE)
 {
 	if(context.GetPlayerSlot() == -1)return;
 	CCSPlayerController* pPlayerController = (CCSPlayerController*)g_pEntitySystem->GetBaseEntity((CEntityIndex)(context.GetPlayerSlot().Get() + 1));
@@ -293,7 +293,7 @@ CON_COMMAND_F(skin, "skin", FCVAR_CLIENT_CAN_EXECUTE)
 	//pItemServices->GiveNamedItem(weapon_name->second.c_str());
 	// g_pGameRules->PlayerRespawn(static_cast<CCSPlayerPawn*>(pPlayerPawn));
 	META_CONPRINTF( "called by %lld\n", steamid);
-	sprintf(buf, " \x04SKINS | \x02%s \x01Sua skin foi modificada para: \x02%d \x01Pattern: \x02%d\x01 Desgaste: \x02%f",pPlayerController->m_iszPlayerName(),atoi(args.Arg(1)),atoi(args.Arg(2)),atof(args.Arg(3)));
+	sprintf(buf, " \x04GEN | \x02%s \x01Tu skin fue modificada para: \x02%d \x01Patron: \x02%d\x01 Desgaste: \x02%f",pPlayerController->m_iszPlayerName(),atoi(args.Arg(1)),atoi(args.Arg(2)),atof(args.Arg(3)));
 	FnUTIL_ClientPrintAll(3, buf,nullptr, nullptr, nullptr, nullptr);
 }
 
