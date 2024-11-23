@@ -22,15 +22,6 @@ jobs:
       - name: Make build directory
         run: mkdir ./build
 
-      - name: Update version header
-        run: |
-          echo "#define VERSION_STRING \"${{ inputs.version }}\"" > ./src/version.h
-
-      - name: Build and run Docker image
-        run: |
-          docker build . --file Dockerfile --tag cs2_weapon_skin-linux-builder
-          docker run -v ./build:/app/build -v ./.git:/app/.git cs2_weapon_skin-linux-builder
-
       - name: Archive build
         uses: actions/upload-artifact@v4
         with:
