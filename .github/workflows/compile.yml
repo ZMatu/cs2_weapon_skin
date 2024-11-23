@@ -9,16 +9,10 @@ on:
     paths-ignore:
     - LICENSE
     - README.md
-    - 'configs**'
-    - '**.sln'
-    - '**.vcxproj**'
   pull_request:
     paths-ignore:
     - LICENSE
     - README.md
-    - 'configs**'
-    - '**.sln'
-    - '**.vcxproj**'
 
 jobs:
   build:
