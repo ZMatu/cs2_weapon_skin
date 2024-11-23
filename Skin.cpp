@@ -314,25 +314,25 @@ const char* Skin::GetDate()
 
 const char* Skin::GetLogTag()
 {
-	return "skin";
+	return "gen";
 }
 
 const char* Skin::GetAuthor()
 {
-	return "宇宙遨游";
+	return "ZMatu";
 }
 
 const char* Skin::GetDescription()
 {
-	return "武器皮肤插件";
+	return "si";
 }
 
 const char* Skin::GetName()
 {
-	return "武器皮肤插件";
+	return "si";
 }
 
 const char* Skin::GetURL()
 {
-	return "http://cs2.wssr.top";
+	return "https://www.github.com/zmatu";
 }
