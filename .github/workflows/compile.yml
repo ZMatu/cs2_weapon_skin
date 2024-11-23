@@ -68,6 +68,7 @@ jobs:
 
       - name: Build
         shell: bash
+        working-directory: cs2_weapon_skin
         run: |
           mkdir build && cd build
           python ../configure.py --enable-optimize --sdks cs2
