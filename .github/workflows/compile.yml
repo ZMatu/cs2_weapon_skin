@@ -67,7 +67,6 @@ jobs:
           ln -sf /usr/bin/clang-16 /usr/bin/clang && ln -sf /usr/bin/clang++-16 /usr/bin/clang++
 
       - name: Build
-        working-directory: cs2_weapon_skin
         shell: bash
         run: |
           mkdir build && cd build
